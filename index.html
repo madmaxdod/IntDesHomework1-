@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Dev Homework Report</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #e2e8f0;
+            color: #333;
+        }
+        .report-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            text-align: center;
+        }
+        h1 {
+            color: #1a202c;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 30px;
+            color: #4a5568;
+            border-bottom: 2px solid #a0aec0;
+            padding-bottom: 5px;
+        }
+        h3 {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+        .analysis-section {
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        a {
+            color: #2b6cb0;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        pre {
+            background-color: #f4f6f8;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        code {
+            font-family: monospace;
+            color: #2d3748;
+        }
+    </style>
+</head>
+<body>
+    <div class="report-container">
+        <h1>Web Search Homework</h1>
+        <h3>Findings from my digital "sleuthing" on two websites.</h3>
+        
+        <h2>Screenslate.com Analysis</h2>
+        <div class="analysis-section">
+            <p>My first website was screenslate.com. After using the Chrome Inspector and looking for clues, I discovered that this website was built using React.js. </p>
+            <p>While the absence of obvious script tags for React made me think it used a <strong>hand-coded solution</strong>, but digging deeper into the source tab I was able to find certain elements using the .react tag that leads me to believe it is using react.js. The project is likely built on a more subtle or custom implementation of a React framework, which still relies on core web technologies like plain HTML and CSS, but uses a library to handle component-based UI.</p>
+            <p>This website, although I love its functionality, became overwhelming pretty quickly, so I wanted to move to something more digestable.</p>
+        </div>
+
+        <h2>Clicking.toys Analysis</h2>
+        <div class="analysis-section">
+            <p>For my second website, I analyzed <a href="https://clicking.toys/flip-grid/neat-nine/3-holes/">clicking.toys</a>. This site was a perfect example of a different type of web project. I found a <code>&lt;canvas&gt;</code> element in the HTML, which suggested the presence of <strong>generative art</strong>.</p>
+            <p>By inspecting the code, I confirmed that the site is also not using a major framework. The game itself is powered by <strong>vanilla JavaScript</strong>, with the core game logic and scoring handled in custom files named <code>flip-grid.min.js</code> and <code>scoring.min.js</code>. The use of the <code>&lt;canvas&gt;</code> element and a script file points towards a library for creative coding called <strong>p5.js</strong> being used. The game's interactive "flipping" visuals are handled by HTML <code>div</code> elements, while the canvas likely provides background effects or a secondary layer.</p>
+            <p>These simple java files were <strong>minified</strong>, so the full logic was a bit confusing.</p>
+            <br>
+            <br>
+            <h3>Here's some code I looked at specifically:</h3>
+            <pre id="code-block"><code>
+    @media screen and (max-width: 850px) {
+    .home-content {
+        flex-direction:column;
+        gap: 60px
+    }
+
+    .home-demo {
+        margin: auto
+    }
+
+    .home-details {
+        text-align: center;
+        order: 1
+    }
+
+    .home-scores {
+        order: 2
+    }
+
+    .home-scores h2 {
+        display: none
+    }
+
+    .game-body {
+        flex-direction: column;
+        min-height: 100dvh;
+        gap: 0
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto
+    }
+
+    .sidebar .score {
+        font-size: 12px!important;
+        padding: 2px 0 2px 5px!important
+    }
+
+    .sidebar h1 {
+        font-size: 20px
+    }
+
+    .sidebar-footer,.sidebar-ad {
+        display: none!important
+    }
+
+    .sidebar .home-records {
+        padding-top: 0;
+        padding-bottom: 5px
+    }
+
+    <span id="game-area-styles">.game-area {
+        flex-direction: column-reverse!important;
+        height: auto!important;
+        justify-content: start!important
+    }</span>
+
+    .game-intro {
+        display: none
+    }
+
+    .win-directions {
+        font-size: 11px
+    }
+
+    .game-wrapper {
+        margin-top: 10px
+    }
+
+    .score {
+        flex-grow: 1;
+        width: unset;
+        font-size: 13px;
+        height: 30px
+    }
+
+    .game-scores {
+        padding-top: 5px
+    }
+
+    .game-scores,.set {
+        width: 100%
+    }
+
+    .right-ad {
+        display: none
+    }
+
+    .game-scores {
+        z-index: 4
+    }
+
+    .victory {
+        min-width: unset;
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-top: 10px
+    }
+
+    .larger {
+        font-size: 15px!important
+    }
+
+    .victory-header {
+        font-size: 24px!important
+    }
+}</code></pre>
+            <p>I looked into the CSS file and found a media query function for the game that activates at 850px. This code is telling the browser to apply specific style changes, to move the header and extend the text across a banner on top of the screen, only when the width is 850 pixels or less. The purpose of this is to make the website look good and be easy to use on a mobile device. For example, it changes the layout from side-by-side to a single column and hides some elements like ads to save visual space.</p>
+        </div>
+    </div>
+</body>
+</html>
